@@ -14,7 +14,7 @@
         <label for="nameInput">Username:</label>
         <input ng-model="name" type="text" id="nameInput" placeholder="Choose Username"><br />
         <label for="passwordInput">Password:</label>
-        <input ng-model="password" ng-keydown="addUser($event)" type="password" id="messageInput"  placeholder="Choose Password">
+        <input ng-model="password" ng-keydown="addUser($event)" type="password" id="password"  placeholder="Choose Password">
       </div>
 
       <ul id="example-messages">
@@ -45,7 +45,7 @@
             if (e.keyCode === 13 && $scope.password) {
               //ALLOW CUSTOM OR ANONYMOUS USER NAMES
               if ($scope.name != ''){
-                $scope.users.$add({ user: $scope.name, password: $scope.msg });
+                $scope.users.$add({ user: $scope.name, password: $scope.password });
                 //RESET MESSAGE
                 $scope.password = "";
               }
