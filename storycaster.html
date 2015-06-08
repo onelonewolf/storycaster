@@ -12,7 +12,9 @@
 
       <div>
         <label for="nameInput">Username:</label>
-        <input ng-model="name" type="text" id="nameInput" placeholder="enter a username...">
+        <input ng-model="name" type="text" id="nameInput" placeholder="enter a username..."><br />
+        <label for="passwordInput">Username:</label>
+        <input ng-model="password" ng-keydown="addUser($event)" type="text" id="messageInput"  placeholder="Type a message!!!">
       </div>
 
       <ul id="example-messages">
@@ -23,7 +25,7 @@
       </ul>
 
       <footer>
-        <input ng-model="msg" ng-keydown="addMessage($event)" type="text" id="messageInput"  placeholder="Type a message!!!">
+
       </footer>
     </div>
 
@@ -33,19 +35,20 @@
 
       myApp.controller("MyController", ["$scope", "$firebaseArray",
         function($scope, $firebaseArray) {
-          var ref = new Firebase("https://storycaster.firebaseio.com/");
-          $scope.messages = $firebaseArray(ref);
+          var ref = new Firebase("https://storycaster.firebaseio.com/users");
+          $scope.users = $firebaseArray(ref);
 
           //ADD MESSAGE METHOD
-          $scope.addMessage = function(e) {
+          $scope.addUser = function(e) {
 
             //LISTEN FOR RETURN KEY
-            if (e.keyCode === 13 && $scope.msg) {
+            if (e.keyCode === 13 && $scope.password) {
               //ALLOW CUSTOM OR ANONYMOUS USER NAMES
-              var name = $scope.name || "anonymous";
-              $scope.messages.$add({ from: name, body: $scope.msg });
-              //RESET MESSAGE
-              $scope.msg = "";
+              if ($scope.name != ''){
+                $scope.users.$add({ user: $scope.name, password: $scope.msg });
+                //RESET MESSAGE
+                $scope.password = "";
+              }
             }
           }
         }
