@@ -45,7 +45,7 @@
             if (e.keyCode === 13 && $scope.password) {
               //ALLOW CUSTOM OR ANONYMOUS USER NAMES
               if ($scope.name != ''){
-                $scope.users.$add({ user: $scope.name, password: $scope.password });
+                $scope.users.$add({ name: $scope.name, password: $scope.password });
                 //RESET MESSAGE
                 $scope.password = "";
               }
