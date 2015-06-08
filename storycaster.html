@@ -12,15 +12,15 @@
 
       <div>
         <label for="nameInput">Username:</label>
-        <input ng-model="name" type="text" id="nameInput" placeholder="enter a username..."><br />
-        <label for="passwordInput">Username:</label>
-        <input ng-model="password" ng-keydown="addUser($event)" type="text" id="messageInput"  placeholder="Type a message!!!">
+        <input ng-model="name" type="text" id="nameInput" placeholder="Choose Username"><br />
+        <label for="passwordInput">Password:</label>
+        <input ng-model="password" ng-keydown="addUser($event)" type="password" id="messageInput"  placeholder="Choose Password">
       </div>
 
       <ul id="example-messages">
-        <li ng-repeat="msg in messages">
-          <strong>{{ msg.from }}</strong>
-          {{ msg.body }}
+        <li ng-repeat="user in users">
+          <strong>{{ user.name }}</strong>
+          {{ user.password }}
         </li>
       </ul>
 
