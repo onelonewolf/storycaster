@@ -4,21 +4,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
-    <link rel="stylesheet" href="/resources/tutorial/css/example.css"/>
   </head>
   <body ng-controller="MyController">
     <!-- CHAT MARKUP -->
-    <div class="example-chat l-demo-container">
-      <header>Firebase Chat Demo</header>
+    <div>
+      <header></header>
 
-      <div class="example-chat-toolbar">
+      <div>
         <label for="nameInput">Username:</label>
         <input ng-model="name" type="text" id="nameInput" placeholder="enter a username...">
       </div>
 
-      <ul id="example-messages" class="example-chat-messages">
+      <ul id="example-messages">
         <li ng-repeat="msg in messages">
-          <strong class="example-chat-username">{{ msg.from }}</strong>
+          <strong>{{ msg.from }}</strong>
           {{ msg.body }}
         </li>
       </ul>
@@ -34,7 +33,7 @@
 
       myApp.controller("MyController", ["$scope", "$firebaseArray",
         function($scope, $firebaseArray) {
-          var ref = new Firebase("https://m4ep8l6kdke.firebaseio-demo.com/");
+          var ref = new Firebase("https://storycaster.firebaseio.com/");
           $scope.messages = $firebaseArray(ref);
 
           //ADD MESSAGE METHOD
